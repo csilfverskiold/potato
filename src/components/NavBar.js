@@ -2,17 +2,21 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+import styles from "../styles/NavBar.module.css";
+import logo from "../assets/logo_placeholder.png";
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" expand="md" fixed="top">
+    <Navbar className={styles.NavBar} expand="md" fixed="top">
       <Container>
-        <Navbar.Brand href="#home">Potato Logo</Navbar.Brand>
+        <Navbar.Brand>
+          <img src={logo} alt="logo" height="50" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+          <Nav className="ml-auto text-right">
+            <Nav.Link>Sign in</Nav.Link>
+            <Nav.Link>Sign up</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -21,3 +25,8 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+// Replace placeholder logo
+// Maybe(?) add FA icons to "Sign in" / "Sign up"
+// Add CSS styles, fonts
+// Source to help implement ^ above ^: LMS > Moments > Navigation and Authentication > Video 1, 2

@@ -1,0 +1,6 @@
+/* Add styling for entire site */
+
+.App {
+    background-color: #fcfcfc;
+    min-height: 100vh;
+}
