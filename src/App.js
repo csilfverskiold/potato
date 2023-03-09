@@ -5,34 +5,9 @@ import { Route, Switch } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
-import { createContext, useEffect, useState } from "react";
-import axios from "axios";
-
-// Comment
-export const CurrentUserContext = createContext();
-export const SetCurrentUserContext = createContext();
 
 function App() {
-  // Persists the state of the currently logged in user
-  const [currentUser, setCurrentUser] = useState(null);
-
-  // Makes a network request to check who the user is
-  const handleMount = async () => {
-    try {
-      const { data } = await axios.get("dj-rest-auth/user/");
-      setCurrentUser(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    handleMount();
-  }, []);
-
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <SetCurrentUserContext.Provider value={setCurrentUser}>
         <div className={styles.App}>
           <NavBar />
           <Container className={styles.Main}>
@@ -44,8 +19,6 @@ function App() {
             </Switch>
           </Container>
         </div>
-      </SetCurrentUserContext.Provider>
-    </CurrentUserContext.Provider>
   );
 }
 
