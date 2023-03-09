@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 import styles from "../../styles/SignInUpForm.module.css";
@@ -14,12 +14,12 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 
 import axios from "axios";
-import { SetCurrentUserContext } from "../../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 // Sign in user profile
 // Allows sign in form input data and handles form submission
 function SignInForm() {
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",

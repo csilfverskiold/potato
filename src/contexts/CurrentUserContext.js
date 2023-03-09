@@ -1,9 +1,12 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
 // Storing logic in current user context and making API call
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
+
+export const useCurrentUser = () => useContext(CurrentUserContext);
+export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
   // Persists the state of the currently logged in user
