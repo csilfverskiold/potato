@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -13,6 +15,7 @@ import Alert from "react-bootstrap/Alert";
 
 import axios from "axios";
 
+// Create user profile 
 // Allows sign up form input data and handles form submission
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -105,7 +108,7 @@ const SignUpForm = () => {
               className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
               type="submit"
             >
-              Sign up
+              Sign Up
             </Button>
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className="mt-3">
