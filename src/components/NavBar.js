@@ -10,7 +10,30 @@ import { useCurrentUser } from "../contexts/CurrentUserContext";
 const NavBar = () => {
   const currentUser = useCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const addRecipeIcon = (
+    <NavLink className={styles.NavLink} to="/recipes/create">
+      Add recipe
+    </NavLink>
+  );
+  const loggedInIcons = (
+    <>
+      <NavLink className={styles.NavLink} to="/feed">
+        Feed
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/saved">
+        Saved recipes
+      </NavLink>
+      <NavLink className={styles.NavLink} to="/" onClick={() => {}}>
+        Sign out
+      </NavLink>
+      <NavLink
+        className={styles.NavLink}
+        to={`/profiles/${currentUser?.profile_id}`}
+      >
+        <img src={currentUser?.profile_image} />
+      </NavLink>
+    </>
+  );
   const loggedOutIcons = (
     <>
       <NavLink className={styles.NavLink} to="/signin">
@@ -30,6 +53,7 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="50" />
           </Navbar.Brand>
         </NavLink>
+        {currentUser && addRecipeIcon}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto text-right">
