@@ -16,15 +16,41 @@ import Asset from "../../components/Asset";
 function RecipeCreateForm() {
   const [errors, setErrors] = useState({});
 
+  const [recipeData, setRecipeData] = useState({
+    title: "",
+    category: "",
+    ingredients: "",
+    instructions: "",
+    image: "",
+  });
+  const { title, category, ingredients, instructions, image } = recipeData;
+
+  const handleChange = (event) => {
+    setRecipeData({
+      ...recipeData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   const textFields = (
     <div className="text-center">
       <Form.Group>
         <Form.Label>Title</Form.Label>
-        <Form.Control type="text" name="title" />
+        <Form.Control
+          type="text"
+          name="title"
+          value={title}
+          onChange={handleChange}
+        />
       </Form.Group>
       <Form.Group>
         <Form.Label>Category</Form.Label>
-        <Form.Control as="select" name="category">
+        <Form.Control
+          as="select"
+          name="category"
+          value={category}
+          onChange={handleChange}
+        >
           <option>Breakfast</option>
           <option>Appetizer</option>
           <option>Entrée</option>
@@ -34,21 +60,33 @@ function RecipeCreateForm() {
       </Form.Group>
       <Form.Group>
         <Form.Label>Ingredients</Form.Label>
-        <Form.Control as="textarea" rows={5} name="ingredients" />
+        <Form.Control
+          as="textarea"
+          rows={5}
+          name="ingredients"
+          value={ingredients}
+          onChange={handleChange}
+        />
       </Form.Group>
       <Form.Group>
         <Form.Label>Instructions</Form.Label>
-        <Form.Control as="textarea" rows={5} name="instructions" />
+        <Form.Control
+          as="textarea"
+          rows={5}
+          name="instructions"
+          value={instructions}
+          onChange={handleChange}
+        />
       </Form.Group>
 
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        Create
       </Button>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => {}}
       >
-        cancel
+        Cancel
       </Button>
     </div>
   );
