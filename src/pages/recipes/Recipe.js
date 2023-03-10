@@ -39,9 +39,18 @@ const Recipe = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && recipePage && "..."} 
+            {is_owner && recipePage && "..."}
           </div>
         </Media>
+      </Card.Body>
+      <Link to={`/recipes/${id}`}>
+        <Card.Img src={image} alt={title} />
+      </Link>
+      <Card.Body>
+        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {category && <Card.Text>{category}</Card.Text>}
+        {ingredient && <Card.Text>{ingredient}</Card.Text>}
+        {instruction && <Card.Text>{instruction}</Card.Text>}
       </Card.Body>
     </Card>
   );
