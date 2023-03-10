@@ -32,6 +32,16 @@ function RecipeCreateForm() {
     });
   };
 
+  const handleChangeImage = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(image);
+      setRecipeData({
+        ...recipeData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
+  };
+
   const textFields = (
     <div className="text-center">
       <Form.Group>
@@ -105,6 +115,11 @@ function RecipeCreateForm() {
               >
                 <Asset src={Upload} message="Click to upload an image" />
               </Form.Label>
+              <Form.File
+                id="image-upload"
+                accept="image/*"
+                onChange={handleChangeImage}
+              />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
           </Container>
