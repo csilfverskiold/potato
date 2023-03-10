@@ -1,6 +1,8 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Recipe.module.css";
 import { Link } from "react-router-dom";
@@ -51,6 +53,60 @@ const Recipe = (props) => {
         {category && <Card.Text>{category}</Card.Text>}
         {ingredient && <Card.Text>{ingredient}</Card.Text>}
         {instruction && <Card.Text>{instruction}</Card.Text>}
+        <div className={styles.RecipeBar}>
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't like your own recipe!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          ) : like_id ? (
+            <span onClick={() => {}}>
+              <i className={`fas fa-heart ${styles.Heart}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={() => {}}>
+              <i className={`far fa-heart ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to like recipes!</Tooltip>}
+            >
+              <i className="far fa-heart" />
+            </OverlayTrigger>
+          )}
+          {likes_count}
+          {is_owner ? (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>You can't save your own recipe!</Tooltip>}
+            >
+              <i className="fa-solid fa-book-bookmark" />
+            </OverlayTrigger>
+          ) : save_id ? (
+            <span onClick={() => {}}>
+              <i className={`fa-solid fa-book-bookmark ${styles.Bookmark}`} />
+            </span>
+          ) : currentUser ? (
+            <span onClick={() => {}}>
+              <i className={`fa-solid fa-book-bookmark ${styles.HeartOutline}`} />
+            </span>
+          ) : (
+            <OverlayTrigger
+              placement="top"
+              overlay={<Tooltip>Log in to save recipes!</Tooltip>}
+            >
+              <i className="fa-solid fa-book-bookmark" />
+            </OverlayTrigger>
+          )}
+          {saves_count}
+          <Link to={`/recipes/${id}`}>
+            <i className="far fa-comments" />
+          </Link>
+          {comments_count}
+        </div>
       </Card.Body>
     </Card>
   );
