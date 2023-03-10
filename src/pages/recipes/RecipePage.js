@@ -33,7 +33,7 @@ function RecipePage() {
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles for mobile</p>
-        <Recipe {...recipe.results[0]} setRecipes={setRecipe}/>
+        <Recipe {...recipe.results[0]} setRecipes={setRecipe} recipePage/>
         <Container className={appStyles.Content}>
           Comments
         </Container>

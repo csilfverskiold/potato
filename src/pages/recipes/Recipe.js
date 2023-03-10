@@ -1,5 +1,10 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Recipe.module.css";
+import { Link } from "react-router-dom";
+import Avatar from "../../components/Avatar";
 
 const Recipe = (props) => {
   const {
@@ -18,9 +23,28 @@ const Recipe = (props) => {
     instruction,
     image,
     updated_at,
+    recipePage,
   } = props;
 
-  return <div>Recipe placeholder text is here</div>;
+  const currentUser = useCurrentUser();
+  const is_owner = currentUser?.username === owner; // Checks if current user matches owner of recipe
+
+  return (
+    <Card className={styles.Recipe}>
+      <Card.Body>
+        <Media className="align-items-center justify-content-between">
+          <Link to={`/profiles/${profile_id}`}>
+            <Avatar src={profile_image} height={55} />
+            {owner}
+          </Link>
+          <div className="d-flex align-items-center">
+            <span>{updated_at}</span>
+            {is_owner && recipePage && "..."} 
+          </div>
+        </Media>
+      </Card.Body>
+    </Card>
+  );
 };
 
 export default Recipe;
