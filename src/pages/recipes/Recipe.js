@@ -91,7 +91,7 @@ const Recipe = (props) => {
             </span>
           ) : currentUser ? (
             <span onClick={() => {}}>
-              <i className={`fa-solid fa-book-bookmark ${styles.HeartOutline}`} />
+              <i className={`fa-solid fa-book-bookmark ${styles.BookmarkOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
