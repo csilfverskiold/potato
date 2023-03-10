@@ -1,7 +1,7 @@
 /* Add styling for entire site */
 
 .App {
-    /* font-family: ADD FONT FAMILY HERE, sans-serif; */
+    font-family: "Nunito", sans-serif;
     background-color: #f8f8f8;
     min-height: 100vh;
   }
@@ -34,7 +34,7 @@
   }
   
   a {
-    color: #555555;
+    color: #ffffff;
     transition: color ease-in-out 0.3s;
   }
   
@@ -43,7 +43,7 @@
   }
   
   a:hover i {
-    color: #2142b2;
+    color: #555555;
     transition: color ease-in-out 0.3s;
   }
   
@@ -61,7 +61,7 @@
   i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
-    color: #2142b2;
+    color: #555555;
   }
   
   figure {

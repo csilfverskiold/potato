@@ -29,20 +29,32 @@ const NavBar = () => {
   };
 
   const addRecipeIcon = (
-    <NavLink className={styles.NavLink} to="/recipes/create">
-      Add recipe
+    <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/recipes/create"
+    >
+      <i className="far fa-plus-square"></i>Add recipe
     </NavLink>
   );
   const loggedInIcons = (
     <>
-      <NavLink className={styles.NavLink} to="/feed">
-        Feed
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/feed"
+      >
+        <i className="fa-solid fa-utensils"></i>Feed
       </NavLink>
-      <NavLink className={styles.NavLink} to="/saved">
-        Saved recipes
+      <NavLink
+        className={styles.NavLink}
+        activeClassName={styles.Active}
+        to="/saved"
+      >
+        <i className="fa-solid fa-book-bookmark"></i>Saved recipes
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
-        Sign out
+        <i className="fas fa-sign-out-alt"></i>Sign out
       </NavLink>
       <NavLink
         className={styles.NavLink}
@@ -55,10 +67,10 @@ const NavBar = () => {
   const loggedOutIcons = (
     <>
       <NavLink className={styles.NavLink} to="/signin">
-        Sign in
+        <i className="fas fa-sign-in-alt"></i>Sign in
       </NavLink>
-      <NavLink className={styles.NavLink} to="/signup">
-        Sign up
+      <NavLink to="/signup" className={styles.NavLink}>
+        <i className="fas fa-user-plus"></i>Sign up
       </NavLink>
     </>
   );
