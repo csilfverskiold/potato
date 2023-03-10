@@ -22,11 +22,11 @@ function RecipeCreateForm() {
   const [recipeData, setRecipeData] = useState({
     title: "",
     category: "",
-    ingredients: "",
-    instructions: "",
+    ingredient: "",
+    instruction: "",
     image: "",
   });
-  const { title, category, ingredients, instructions, image } = recipeData;
+  const { title, category, ingredient, instruction, image } = recipeData;
 
   const imageInput = useRef(null);
   const history = useHistory();
@@ -54,8 +54,8 @@ function RecipeCreateForm() {
 
     formData.append("title", title);
     formData.append("category", category);
-    formData.append("ingredients", ingredients);
-    formData.append("instructions", instructions);
+    formData.append("ingredient", ingredient);
+    formData.append("instruction", instruction);
     formData.append("image", imageInput.current.files[0]);
 
     try {
@@ -100,8 +100,8 @@ function RecipeCreateForm() {
         <Form.Control
           as="textarea"
           rows={5}
-          name="ingredients"
-          value={ingredients}
+          name="ingredient"
+          value={ingredient}
           onChange={handleChange}
         />
       </Form.Group>
@@ -110,8 +110,8 @@ function RecipeCreateForm() {
         <Form.Control
           as="textarea"
           rows={5}
-          name="instructions"
-          value={instructions}
+          name="instruction"
+          value={instruction}
           onChange={handleChange}
         />
       </Form.Group>
@@ -129,7 +129,7 @@ function RecipeCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -155,7 +155,10 @@ function RecipeCreateForm() {
                   className="d-flex justify-content-center"
                   htmlFor="image-upload"
                 >
-                  <Asset src={Upload} message="Click to add an image to your recipe" />
+                  <Asset
+                    src={Upload}
+                    message="Click to add an image to your recipe"
+                  />
                 </Form.Label>
               )}
 
