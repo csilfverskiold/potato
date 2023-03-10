@@ -19,6 +19,10 @@
     margin-top: 10px;
     font-weight: 700;
   }
+
+  .Icon {
+    text-align: center;
+  }
   
   .Heart {
     color: #f85032;

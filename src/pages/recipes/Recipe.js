@@ -68,7 +68,7 @@ const Recipe = (props) => {
             <Card.Text>{instruction}</Card.Text>
           </div>
         )}
-        <div className={styles.RecipeBar}>
+        <div className={styles.Icon}>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
