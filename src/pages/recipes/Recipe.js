@@ -35,7 +35,7 @@ const Recipe = (props) => {
     <Card className={styles.Recipe}>
       <Card.Body>
         <Media className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
+          <Link className={styles.Profilename} to={`/profiles/${profile_id}`}>
             <Avatar src={profile_image} height={55} />
             {owner}
           </Link>
@@ -49,10 +49,25 @@ const Recipe = (props) => {
         <Card.Img src={image} alt={title} />
       </Link>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
-        {category && <Card.Text>{category}</Card.Text>}
-        {ingredient && <Card.Text>{ingredient}</Card.Text>}
-        {instruction && <Card.Text>{instruction}</Card.Text>}
+        {title && <Card.Title>{title}</Card.Title>}
+        {category && (
+          <div>
+            <p className={styles.Label}>Category:</p>
+            <Card.Text>{category}</Card.Text>
+          </div>
+        )}
+        {ingredient && (
+          <div>
+            <p className={styles.Label}>Ingredients:</p>
+            <Card.Text>{ingredient}</Card.Text>
+          </div>
+        )}
+        {instruction && (
+          <div>
+            <p className={styles.Label}>Instructions:</p>
+            <Card.Text>{instruction}</Card.Text>
+          </div>
+        )}
         <div className={styles.RecipeBar}>
           {is_owner ? (
             <OverlayTrigger
@@ -91,7 +106,9 @@ const Recipe = (props) => {
             </span>
           ) : currentUser ? (
             <span onClick={() => {}}>
-              <i className={`fa-solid fa-book-bookmark ${styles.BookmarkOutline}`} />
+              <i
+                className={`fa-solid fa-book-bookmark ${styles.BookmarkOutline}`}
+              />
             </span>
           ) : (
             <OverlayTrigger

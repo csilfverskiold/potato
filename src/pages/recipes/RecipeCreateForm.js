@@ -94,6 +94,7 @@ function RecipeCreateForm() {
           value={category}
           onChange={handleChange}
         >
+          <option>Choose an option</option>
           <option>Breakfast</option>
           <option>Appetizer</option>
           <option>Entrée</option>

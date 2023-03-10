@@ -3,12 +3,21 @@
     border: 1px solid #dadadf;
     border-radius: 2px;
     margin-bottom: 16px;
-    text-align: center;
   }
   
   .Recipe figure,
   h5 {
     margin: 0 0;
+  }
+  
+  .Profilename {
+    color:#000000; 
+  }
+
+  .Label {
+    margin-bottom: 0;
+    margin-top: 10px;
+    font-weight: 700;
   }
   
   .Heart {
