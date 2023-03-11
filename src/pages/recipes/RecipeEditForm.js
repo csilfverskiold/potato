@@ -8,12 +8,9 @@ import Container from "react-bootstrap/Container";
 import Alert from "react-bootstrap/Alert";
 import Image from "react-bootstrap/Image";
 
-import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/RecipeCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 import { useHistory, useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -78,12 +75,12 @@ function RecipeEditForm() {
     formData.append("instruction", instruction);
 
     if (imageInput?.current?.files[0]) {
-        formData.append("image", imageInput.current.files[0]);
-      }
-  
-      try {
-        await axiosReq.put(`/recipes/${id}/`, formData);
-        history.push(`/recipes/${id}`);
+      formData.append("image", imageInput.current.files[0]);
+    }
+
+    try {
+      await axiosReq.put(`/recipes/${id}/`, formData);
+      history.push(`/recipes/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -165,31 +162,17 @@ function RecipeEditForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              {image ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={image} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="image-upload"
-                    >
-                      Change the image
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
+              <figure>
+                <Image className={appStyles.Image} src={image} rounded />
+              </figure>
+              <div>
                 <Form.Label
-                  className="d-flex justify-content-center"
+                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                   htmlFor="image-upload"
                 >
-                  <Asset
-                    src={Upload}
-                    message="Click to add an image to your recipe"
-                  />
+                  Change the image
                 </Form.Label>
-              )}
+              </div>
 
               <Form.File
                 id="image-upload"
