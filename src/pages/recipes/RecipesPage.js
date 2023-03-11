@@ -14,6 +14,7 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function RecipesPage({ message, filter = "" }) {
   const [recipes, setRecipes] = useState({ results: [] });
@@ -65,9 +66,7 @@ function RecipesPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {recipes.results.length ? (
-              recipes.results.map((recipe) => (
-                <Recipe key={recipe.id} {...recipe} setRecipes={setRecipes} />
-              ))
+                <InfiniteScroll />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
