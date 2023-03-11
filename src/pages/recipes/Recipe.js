@@ -7,6 +7,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Recipe.module.css";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
+import { axiosRes } from "../../api/axiosDefaults";
 
 const Recipe = (props) => {
   const {
@@ -26,10 +27,45 @@ const Recipe = (props) => {
     image,
     updated_at,
     recipePage,
+    setRecipes,
   } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner; // Checks if current user matches owner of recipe
+
+  // Allows users to like a recipe
+  const handleLike = async () => {
+    try {
+      const { data } = await axiosRes.post("/likes/", { recipe: id });
+      setRecipes((prevRecipes) => ({
+        ...prevRecipes,
+        results: prevRecipes.results.map((recipe) => {
+          return recipe.id === id
+            ? { ...recipe, likes_count: recipe.likes_count + 1, like_id: data.id }
+            : recipe;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Allows users to unlike a recipe
+  const handleUnlike = async () => {
+    try {
+      await axiosRes.delete(`/likes/${like_id}/`);
+      setRecipes((prevRecipes) => ({
+        ...prevRecipes,
+        results: prevRecipes.results.map((recipe) => {
+          return recipe.id === id
+            ? { ...recipe, likes_count: recipe.likes_count - 1, like_id: null }
+            : recipe;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card className={styles.Recipe}>
@@ -77,11 +113,11 @@ const Recipe = (props) => {
               <i className="far fa-heart" />
             </OverlayTrigger>
           ) : like_id ? (
-            <span onClick={() => {}}>
+            <span onClick={handleUnlike}>
               <i className={`fas fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
-            <span onClick={() => {}}>
+            <span onClick={handleLike}>
               <i className={`far fa-heart ${styles.HeartOutline}`} />
             </span>
           ) : (
