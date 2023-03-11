@@ -69,7 +69,7 @@ function RecipesPage({ message, filter = "" }) {
             {recipes.results.length ? (
                 <InfiniteScroll
                 children={recipes.results.map((recipe) => (
-                  <Recipe key={recipe.id} {...recipe} setRecipes={setRecipes} />
+                  <Recipe key={recipe.id} {...recipe} setRecipes={setRecipes} listView/>
                 ))}
                 dataLength={recipes.results.length}
                 loader={<Asset spinner />}

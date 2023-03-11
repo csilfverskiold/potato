@@ -29,6 +29,7 @@ const Recipe = (props) => {
     updated_at,
     recipePage,
     setRecipes,
+    listView
   } = props;
 
   const currentUser = useCurrentUser();
@@ -148,19 +149,19 @@ const Recipe = (props) => {
       </Link>
       <Card.Body>
         {title && <Card.Title>{title}</Card.Title>}
-        {category && (
+        {!listView && category && (
           <div>
             <p className={styles.Label}>Category:</p>
             <Card.Text>{category}</Card.Text>
           </div>
         )}
-        {ingredient && (
+        {!listView && ingredient && (
           <div>
             <p className={styles.Label}>Ingredients:</p>
             <Card.Text>{ingredient}</Card.Text>
           </div>
         )}
-        {instruction && (
+        {!listView && instruction && (
           <div>
             <p className={styles.Label}>Instructions:</p>
             <Card.Text>{instruction}</Card.Text>
