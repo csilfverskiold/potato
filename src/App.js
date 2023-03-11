@@ -40,7 +40,10 @@ function App() {
             exact
             path="/saved"
             render={() => (
-              <RecipesPage message="No results found. Adjust the search keyword or save a recipe." />
+              <RecipesPage
+                message="No results found. Adjust the search keyword or save a recipe."
+                filter={`saves__owner__profile=${profile_id}&ordering=-saves__created_at&`}
+              />
             )}
           />
 
