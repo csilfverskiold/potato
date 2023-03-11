@@ -21,11 +21,12 @@ function RecipePage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: recipe }] = await Promise.all([
+        const [{ data: recipe }, { data: comments }] = await Promise.all([
           axiosReq.get(`/recipes/${id}`),
+          axiosReq.get(`/comments/?recipe=${id}`),
         ]);
         setRecipe({ results: [recipe] });
-        console.log(recipe);
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
