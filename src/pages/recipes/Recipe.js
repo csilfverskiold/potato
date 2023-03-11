@@ -39,6 +39,15 @@ const Recipe = (props) => {
     history.push(`/recipes/${id}/edit`);
   };
 
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/recipes/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   // Allows users to like a recipe
   const handleLike = async () => {
     try {
@@ -125,7 +134,12 @@ const Recipe = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && recipePage && <MoreDropdown handleEdit={handleEdit} /> }
+            {is_owner && recipePage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
