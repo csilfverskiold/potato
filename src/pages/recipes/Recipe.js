@@ -8,6 +8,7 @@ import styles from "../../styles/Recipe.module.css";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Recipe = (props) => {
   const {
@@ -119,7 +120,7 @@ const Recipe = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && recipePage && "..."}
+            {is_owner && recipePage && <MoreDropdown /> }
           </div>
         </Media>
       </Card.Body>
