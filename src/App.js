@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import RecipeCreateForm from "./pages/recipes/RecipeCreateForm";
 import RecipePage from "./pages/recipes/RecipePage";
+import RecipesPage from "./pages/recipes/RecipesPage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
           <NavBar />
           <Container className={styles.Main}>
             <Switch>
-              <Route exact path="/" render={() => <h1>Home page</h1>} />
+              <Route exact path="/" render={() => <RecipesPage message="No results found. Adjust the search keyword." />} />
               <Route exact path="/signin" render={() => <SignInForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/recipes/create" render={() => <RecipeCreateForm />} />
