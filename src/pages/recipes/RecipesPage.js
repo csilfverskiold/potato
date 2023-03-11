@@ -25,7 +25,9 @@ function RecipesPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const { data } = await axiosReq.get(`/recipes/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/recipes/?${filter}search=${query}`
+        );
         setRecipes(data);
         setHasLoaded(true);
       } catch (err) {
@@ -34,7 +36,13 @@ function RecipesPage({ message, filter = "" }) {
     };
 
     setHasLoaded(false);
-    fetchRecipes();
+    const timer = setTimeout(() => {
+      fetchRecipes();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [filter, query, pathname]);
 
   return (
@@ -51,7 +59,7 @@ function RecipesPage({ message, filter = "" }) {
             onChange={(event) => setQuery(event.target.value)}
             type="text"
             className="mr-sm-2"
-            placeholder="Search recipes by titles or ingredients"
+            placeholder="Search recipes by titles or username"
           />
         </Form>
         {hasLoaded ? (
