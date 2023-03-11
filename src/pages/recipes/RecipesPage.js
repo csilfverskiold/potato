@@ -66,7 +66,15 @@ function RecipesPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {recipes.results.length ? (
-                <InfiniteScroll />
+                <InfiniteScroll
+                children={recipes.results.map((recipe) => (
+                  <Recipe key={recipe.id} {...recipe} setRecipes={setRecipes} />
+                ))}
+                dataLength={recipes.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!recipes.next}
+                next={() => {} }
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
