@@ -5,7 +5,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import styles from "../../styles/Recipe.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -33,6 +33,11 @@ const Recipe = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner; // Checks if current user matches owner of recipe
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/recipes/${id}/edit`);
+  };
 
   // Allows users to like a recipe
   const handleLike = async () => {
@@ -120,7 +125,7 @@ const Recipe = (props) => {
           </Link>
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && recipePage && <MoreDropdown /> }
+            {is_owner && recipePage && <MoreDropdown handleEdit={handleEdit} /> }
           </div>
         </Media>
       </Card.Body>
