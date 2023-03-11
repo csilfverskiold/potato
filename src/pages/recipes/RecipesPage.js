@@ -15,6 +15,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function RecipesPage({ message, filter = "" }) {
   const [recipes, setRecipes] = useState({ results: [] });
@@ -73,7 +74,7 @@ function RecipesPage({ message, filter = "" }) {
                 dataLength={recipes.results.length}
                 loader={<Asset spinner />}
                 hasMore={!!recipes.next}
-                next={() => {} }
+                next={() => fetchMoreData(recipes, setRecipes)}
               />
             ) : (
               <Container className={appStyles.Content}>
