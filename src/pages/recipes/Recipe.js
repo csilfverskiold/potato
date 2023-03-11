@@ -41,7 +41,11 @@ const Recipe = (props) => {
         ...prevRecipes,
         results: prevRecipes.results.map((recipe) => {
           return recipe.id === id
-            ? { ...recipe, likes_count: recipe.likes_count + 1, like_id: data.id }
+            ? {
+                ...recipe,
+                likes_count: recipe.likes_count + 1,
+                like_id: data.id,
+              }
             : recipe;
         }),
       }));
@@ -59,6 +63,44 @@ const Recipe = (props) => {
         results: prevRecipes.results.map((recipe) => {
           return recipe.id === id
             ? { ...recipe, likes_count: recipe.likes_count - 1, like_id: null }
+            : recipe;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Allows users to save a recipe
+  const handleSave = async () => {
+    try {
+      const { data } = await axiosRes.post("/saves/", { recipe: id });
+      setRecipes((prevRecipes) => ({
+        ...prevRecipes,
+        results: prevRecipes.results.map((recipe) => {
+          return recipe.id === id
+            ? {
+                ...recipe,
+                saves_count: recipe.saves_count + 1,
+                save_id: data.id,
+              }
+            : recipe;
+        }),
+      }));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // Allows users to unsave a recipe
+  const handleUnsave = async () => {
+    try {
+      await axiosRes.delete(`/saves/${save_id}/`);
+      setRecipes((prevRecipes) => ({
+        ...prevRecipes,
+        results: prevRecipes.results.map((recipe) => {
+          return recipe.id === id
+            ? { ...recipe, saves_count: recipe.saves_count - 1, save_id: null }
             : recipe;
         }),
       }));
@@ -137,11 +179,11 @@ const Recipe = (props) => {
               <i className="fa-solid fa-book-bookmark" />
             </OverlayTrigger>
           ) : save_id ? (
-            <span onClick={() => {}}>
+            <span onClick={handleUnsave}>
               <i className={`fa-solid fa-book-bookmark ${styles.Bookmark}`} />
             </span>
           ) : currentUser ? (
-            <span onClick={() => {}}>
+            <span onClick={handleSave}>
               <i
                 className={`fa-solid fa-book-bookmark ${styles.BookmarkOutline}`}
               />
