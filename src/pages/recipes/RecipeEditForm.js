@@ -76,11 +76,14 @@ function RecipeEditForm() {
     formData.append("category", category);
     formData.append("ingredient", ingredient);
     formData.append("instruction", instruction);
-    formData.append("image", imageInput.current.files[0]);
 
-    try {
-      const { data } = await axiosReq.post("/recipes/", formData);
-      history.push(`/recipes/${data.id}`);
+    if (imageInput?.current?.files[0]) {
+        formData.append("image", imageInput.current.files[0]);
+      }
+  
+      try {
+        await axiosReq.put(`/recipes/${id}/`, formData);
+        history.push(`/recipes/${id}`);
     } catch (err) {
       console.log(err);
       if (err.response?.status !== 401) {
@@ -143,7 +146,7 @@ function RecipeEditForm() {
       </Form.Group>
 
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        Create
+        Save
       </Button>
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
