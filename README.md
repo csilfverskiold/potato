@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Project Potato
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Current state of project
+This is a work in progress. The aim of the project is to create a front end browser-based recipe sharing site, responsive for mobile and desktop. A user of the site will be able to: 
+-	Sign up and create an account
+-	Sign in with their account
+-	Upload and share recipes with other profiles
+-	Comment on other profiles uploaded recipes
+-	Like other profiles recipes
+-	Save other profiles recipes
+-	Filter search results on keywords 
 
-## Available Scripts
+The project can be found in its current state: [Here](https://potato.herokuapp.com/)
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+### Navigation
+- Site navigation: As a **Site user** I can **view a navigation bar from every page** so that **I can navigate easily between pages**
+- Conditional rendering: As a **Site user** I can **see sign in and sign up options when NOT signed in** so that **I can sign in or sign up for an account**
+- Routing: As a **Site user** I can **navigate through pages quickly** so that **I can view content seamlessly without page refresh**
+- Avatar: As a **Site user** I can **view users avatars** so that **I can easily identify users of the application**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Authentication
+- Sign up: As a **Site user** I can **create a new account** so that **I can access all the features for signed up users** 
+- Sign in: As a **Site user** I can **sign in to the app** so that **I can access functionality for signed in users** 
+- Signed in status: As a **Site user** I can **tell if I am signed in or not** so that **I can sign in/out if I need to** 
+- Refresh access tokens: As a **Site user** I can **maintain my signed in status until I choose to sign out** so that **my user experience is not compromised**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Adding recipes
+- Post recipe: As a **signed in Site user** I can **post recipes** so that **I can share my recipes with other users of the site** 
+- View a recipe: As a **Site user** I can **view the details of each individual recipe** so that **I can learn more about it** 
 
-### `npm test`
+### Recipes page
+- View most recently posted recipe: As a **Site user** I can **view all the most recent recipes, ordered by most recently created first** so that **I am up to date with the newest recipe content** 
+- Search functionality: As a **Site user** I can **search for recipes with keywords** so that **I can find the recipes and user profiles I am most interested in**
+- Most saved recipes: As a **Site user** I can **view a list of the most saved recipes** so that **I can see which recipes are popular** 
+- View followed profiles: As a **signed in Site user** I can **view recipes filtered by users I follow** so that **I can keep up to date with their recipes** 
+- Infinite scroll: As a **Site user** I can **keep scrolling through the recipes on the site, that are loaded for me automatically** so that **I don’t have to click on “next page” etc**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Individual recipe page 
+- Recipe page: As a **Site user** I can **view a recipes individual page** so that **I can access the contents and read the comments on that specific recipe**
+- Edit recipe: As a **Recipe owner** I can **edit the recipe title and content** so that **I can make corrections or update my recipe after it was created** 
 
-### `npm run build`
+### Commenting on posts
+- Create a comment: As a **signed in Site user** I can **add comments to a recipe** so that **I can share my thoughts about that recipe** 
+- Comment date: As a **Site user** I can **see how long ago a comment was made** so that **I know how old a comment is** 
+- View comments: As a **Site user** I can **read comments on recipes** so that **I can read what other users think about that recipe** 
+- Edit comment: As an **Owner of a comment** I can **edit my comment** so that **I can fix or update my existing comment** 
+- Delete comment: As an **Owner of a comment** I can **delete my comment** so that **I can control removal of my comment from the app** 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Liking recipes
+- Like/Unlike a recipe: As a **signed in Site user** I can **like or unlike other profiles recipes** so that **I can show my support for the recipes that interests me** 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Saving recipes 
+- Save/Unsave a recipe: As a **signed in Site user** I can **save or unsave other profiles recipes** so that **I can bookmark and save their recipe for future use** 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Follow users 
+- Follow/Unfollow a user: As a **signed in Site user** I can **follow and unfollow other user profiles** so that **I can see and remove posts by specific users in my recipes feed** 
 
-### `npm run eject`
+### Profile page
+- Profile page: As a **Site user** I can **view other user profiles** so that **I can see their recipes and learn more about them**
+- View saved recipes: As a **signed in Site user** I can **view saved recipes of other user profiles** so that **I can find the recipes I saved for later use** 
+- User profile stats: As a **Site user** I can **view stats about a specific user profile: name, nationality, bio, number of recipes, follows and users followed** so that **I can learn more about them** 
+- View all recipes by a specific user profile: As a **Site user** I can **view all the recipes by a specific user** so that **I see their latest recipes or decide to follow them** 
+- Edit profile: As a **signed in Site user** I can **edit my profile** so that **I can update my profile information** 
+- Update username and password: As a **signed in Site user** I can **update my username and password** so that **I can change my display name an keep my profile secure**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Planning
+Before building, when planning this website I used the design tool Figma, to create a wireframe of the project. It allowed me to make a basic sketch of what I wanted the the website to look like, what features to include and where to place them.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Desktop and mobile layout: 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img src="public/wireframe_1.png" alt="Wireframe planning stage">
