@@ -5,7 +5,7 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Asset from "../../components/Asset";
 
-const PopularRecipes = () => {
+const PopularRecipes = ({ mobile }) => {
   const [recipeData, setRecipeData] = useState({
     // pageRecipe for later use
     pageRecipe: { results: [] },
@@ -31,18 +31,30 @@ const PopularRecipes = () => {
   }, [currentUser]);
 
   return (
-    <Container className={appStyles.Content}>
-      {popularRecipes.results.length ? (
-        <>
-          <p>Most saved recipes</p>
-          {popularRecipes.results.map((recipe) => (
+    <Container
+    className={`${appStyles.Content} ${
+      mobile && "d-lg-none text-center mb-3"
+    }`}
+  >
+    {popularRecipes.results.length ? (
+      <>
+        <p>Most saved recipes</p>
+        {mobile ? (
+          <div className="d-flex justify-content-around">
+            {popularRecipes.results.slice(0, 3).map((recipe) => (
+              <p key={recipe.id}>{recipe.title}</p>
+            ))}
+          </div>
+        ) : (
+          popularRecipes.results.slice(0, 5).map((recipe) => (
             <p key={recipe.id}>{recipe.title}</p>
-          ))}
-        </>
-      ) : (
-        <Asset spinner />
-      )}
-    </Container>
+          ))
+        )}
+      </>
+    ) : (
+      <Asset spinner />
+    )}
+  </Container>
   );
 };
 
