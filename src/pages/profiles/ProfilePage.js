@@ -18,6 +18,7 @@ import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
+import { Image } from "react-bootstrap";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -49,11 +50,28 @@ function ProfilePage() {
     <>
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
-          <p>Image</p>
+        <Image
+            className={styles.ProfileImage}
+            roundedCircle
+            src={profile?.image}
+          />
         </Col>
         <Col lg={6}>
-          <h3 className="m-2">Profile username</h3>
-          <p>Profile stats</p>
+        <h3 className="m-2">{profile?.owner}</h3>
+        <Row className="justify-content-center no-gutters">
+            <Col xs={3} className="my-2">
+              <div>{profile?.recipes_count}</div>
+              <div>recipes</div>
+            </Col>
+            <Col xs={3} className="my-2">
+              <div>{profile?.followers_count}</div>
+              <div>followers</div>
+            </Col>
+            <Col xs={3} className="my-2">
+              <div>{profile?.following_count}</div>
+              <div>following</div>
+            </Col>
+          </Row>
         </Col>
         <Col lg={3} className="text-lg-right">
         <p>Follow button</p>
@@ -66,7 +84,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">Profile owner's posts</p>
+      <p className="text-center">Profile owner's recipes</p>
       <hr />
     </>
   );
