@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 
 import Asset from "../../components/Asset";
 
@@ -18,10 +20,15 @@ import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Image, Button } from "react-bootstrap";
+
+import InfiniteScroll from "react-infinite-scroll-component";
+import Recipe from "../recipes/Recipe";
+import { fetchMoreData } from "../../utils/utils";
+import NoResults from "../../assets/no-results.png";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [profileRecipes, setProfileRecipes] = useState({ results: [] });
   const currentUser = useCurrentUser();
   const { id } = useParams();
   const setProfileData = useSetProfileData();
@@ -32,13 +39,16 @@ function ProfilePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }] = await Promise.all([
-          axiosReq.get(`/profiles/${id}/`),
-        ]);
+        const [{ data: pageProfile }, { data: profileRecipes }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/recipes/?owner__profile=${id}`),
+          ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setProfileRecipes(profileRecipes);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -51,15 +61,15 @@ function ProfilePage() {
     <>
       <Row noGutters className="px-3 text-center">
         <Col lg={3} className="text-lg-left">
-        <Image
+          <Image
             className={styles.ProfileImage}
             roundedCircle
             src={profile?.image}
           />
         </Col>
         <Col lg={6}>
-        <h3 className="m-2">{profile?.owner}</h3>
-        <Row className="justify-content-center no-gutters">
+          <h3 className="m-2">{profile?.owner}</h3>
+          <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
               <div>{profile?.recipes_count}</div>
               <div>recipes</div>
@@ -98,11 +108,27 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfilePosts = (
+  const mainProfileRecipes = (
     <>
       <hr />
-      <p className="text-center">Profile owner's recipes</p>
+      <p className="text-center">{profile?.owner}'s recipes</p>
       <hr />
+      {profileRecipes.results.length ? (
+        <InfiniteScroll
+          children={profileRecipes.results.map((recipe) => (
+            <Recipe key={recipe.id} {...recipe} setRecipes={setProfileRecipes} />
+          ))}
+          dataLength={profileRecipes.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileRecipes.next}
+          next={() => fetchMoreData(profileRecipes, setProfileRecipes)}
+        />
+      ) : (
+        <Asset
+          src={NoResults}
+          message={`No results found, ${profile?.owner} hasn't added recipes yet.`}
+        />
+      )}
     </>
   );
 
@@ -114,7 +140,7 @@ function ProfilePage() {
           {hasLoaded ? (
             <>
               {mainProfile}
-              {mainProfilePosts}
+              {mainProfileRecipes}
             </>
           ) : (
             <Asset spinner />
@@ -122,7 +148,7 @@ function ProfilePage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-      <PopularRecipes />
+        <PopularRecipes />
       </Col>
     </Row>
   );
