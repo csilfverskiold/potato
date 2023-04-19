@@ -17,7 +17,7 @@ const PopularRecipes = ({ mobile }) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get("/recipes/?ordering=-saves_count");
+        const { data } = await axiosReq.get("/recipes/?ordering=-likes_count");
         setRecipeData((prevState) => ({
           ...prevState,
           popularRecipes: data,
@@ -38,7 +38,7 @@ const PopularRecipes = ({ mobile }) => {
   >
     {popularRecipes.results.length ? (
       <>
-        <p>Most saved recipes</p>
+        <p>Popular recipes</p>
         {mobile ? (
           <div className="d-flex justify-content-around">
             {popularRecipes.results.slice(0, 3).map((recipe) => (
