@@ -23,7 +23,7 @@ const PopularRecipes = ({ mobile }) => {
           popularRecipes: data,
         }));
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 
