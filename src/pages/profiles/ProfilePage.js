@@ -107,7 +107,9 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
-        {profile?.biography && <Col className="p-3">{profile.biography}</Col>}
+        <Col>{profile?.nationality && <Row className="justify-content-center p-2"><p>Nationality:&nbsp;</p>{profile.nationality}</Row>}
+        {profile?.biography && <Row className="justify-content-center p-2">{profile.biography}</Row>}
+        </Col>
       </Row>
     </>
   );
