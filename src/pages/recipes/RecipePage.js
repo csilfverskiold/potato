@@ -9,6 +9,8 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Recipe from "./Recipe";
 import Comment from "../comments/Comment";
+import PopularRecipes from "./PopularRecipes";
+
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -42,7 +44,7 @@ function RecipePage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular recipes for mobile</p>
+        <PopularRecipes mobile />
         <Recipe {...recipe.results[0]} setRecipes={setRecipe} recipePage />
         <Container className={appStyles.Content}>
           {currentUser ? (
@@ -79,7 +81,7 @@ function RecipePage() {
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular recipes for desktop
+        <PopularRecipes />
       </Col>
     </Row>
   );
