@@ -39,7 +39,7 @@ const PopularRecipes = ({ mobile }) => {
   >
     {popularRecipes.results.length ? (
       <>
-        <p>Popular recipes</p>
+        <p><strong>Popular recipes</strong></p>
         {mobile ? (
           <div className="d-flex justify-content-around">
             {popularRecipes.results.slice(0, 3).map((recipe) => (
