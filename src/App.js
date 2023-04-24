@@ -86,8 +86,3 @@ function App() {
 }
 
 export default App;
-
-// React Router:
-// Route
-// Link
-// Switch

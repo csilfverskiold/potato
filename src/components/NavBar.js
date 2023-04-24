@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import styles from "../styles/NavBar.module.css";
-import logo from "../assets/logo_placeholder.png";
+import logo from "../assets/logo.png";
 import { NavLink } from "react-router-dom";
 import {
   useCurrentUser,
@@ -107,8 +107,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-// Replace placeholder logo
-// Maybe(?) add FA icons to "Sign in" / "Sign up"
-// Add CSS styles, fonts
-// Source to help implement ^ above ^: LMS > Moments > Navigation and Authentication > Video 1, 2

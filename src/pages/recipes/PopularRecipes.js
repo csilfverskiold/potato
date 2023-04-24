@@ -8,7 +8,6 @@ import styles from "../../styles/PopularRecipes.module.css";
 
 const PopularRecipes = ({ mobile }) => {
   const [recipeData, setRecipeData] = useState({
-    // pageRecipe for later use
     pageRecipe: { results: [] },
     popularRecipes: { results: [] },
   });
