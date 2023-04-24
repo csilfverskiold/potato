@@ -37,7 +37,7 @@
   }
 
   .Bookmark {
-    color: #555555;
+    color: #55be6c;
   }
 
   .Bookmark:hover {
@@ -45,5 +45,5 @@
   }
 
   .BookmarkOutline:hover {
-    color: #555555;
+    color: #55be6c;
   }

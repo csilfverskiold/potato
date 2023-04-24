@@ -6,7 +6,7 @@
     border: 1px solid #f0f1f9;
     box-sizing: border-box;
     border-radius: 2px;
-    color: #7177a1;
+    color: #555555;
     text-align: center;
     padding: 10px;
   }
@@ -27,6 +27,7 @@
     text-align: center;
     display: block;
     margin: auto;
+    color: black;
   }
   
   .Link span {
