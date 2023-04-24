@@ -142,11 +142,11 @@ function RecipeEditForm() {
         />
       </Form.Group>
 
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button className={`${btnStyles.Button} ${btnStyles.Grey}`} type="submit">
         Save
       </Button>
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.Grey}`}
         onClick={() => history.goBack()} // Redirects to last page user was on
       >
         Cancel
@@ -167,7 +167,7 @@ function RecipeEditForm() {
               </figure>
               <div>
                 <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                  className={`${btnStyles.Button} ${btnStyles.Grey} btn`}
                   htmlFor="image-upload"
                 >
                   Change the image
