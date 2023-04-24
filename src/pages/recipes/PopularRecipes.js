@@ -42,12 +42,12 @@ const PopularRecipes = ({ mobile }) => {
         {mobile ? (
           <div className="d-flex justify-content-around">
             {popularRecipes.results.slice(0, 3).map((recipe) => (
-              <p><a className={`${styles.PopularRecipes}`} href={`/recipes/${recipe.id}`} key={recipe.id}>{recipe.title}</a></p>
+              <p key={recipe.id}><a className={`${styles.PopularRecipes}`} href={`/recipes/${recipe.id}`}>{recipe.title}</a></p>
             ))}
           </div>
         ) : (
           popularRecipes.results.slice(0, 5).map((recipe) => (
-            <p><a className={`${styles.PopularRecipes}`} href={`/recipes/${recipe.id}`} key={recipe.id}>{recipe.title}</a></p>
+            <p key={recipe.id}><a className={`${styles.PopularRecipes}`} href={`/recipes/${recipe.id}`}>{recipe.title}</a></p>
           ))
         )}
       </>
