@@ -22,6 +22,8 @@ The live site can be found here: [Potato](https://potato.herokuapp.com/)
     - [Frameworks, Libraries, Tools and Programs](#frameworks-libraries-tools-and-programs)
 3. [Front-End](#front-end)
 4. [Back-End API](#back-end-api)
+5. [Features](#features)
+    - [Existing Features](#existing-features)
 
 
 # UX-Design
@@ -181,3 +183,188 @@ Several components were created an reused throughout this project:
 # Back-End API
 
 The API for this Front-End application was built with the Django REST Framework. The repository with a README file for the DRF Back-End can be found [here](https://github.com/csilfverskiold/drf-api-potato).
+
+# Features
+## Existing features
+
+### Home page
+The home page presents the user with various content: 
+- Navbar at the top of the page. Its content changes depending on if the user is signed in or not
+-  Scrollable page containing recipes posted by users, ordering the most recently created at the top
+- Search bar allowing users to search for recipes
+- List of popular recipes
+
+<details><summary>Screenshot 1</summary>
+<img src="docs/images/features/home_page.png">
+</details>
+<details><summary>Screenshot 2</summary>
+<img src="docs/images/features/home_page_signedin.png">
+</details>
+<br>
+
+### Navbar
+The navbar is consistent across all pages of the platform, allowing the user to easily navigate the platform at any time. On smaller screens the the navbar menu collapses under a hamburger menu. Its content changes depending on if the user is signed in or not. 
+
+If a user **is not** signed in, the navbar will provide the user with: 
+- Potato logo. Also serves as a link, directing the user to the home page
+- Sign up link. Directs user to the Sign up page, where they can create an account
+- Sign in link. Directs user to the Sign in page, where the can sign in with their account credentials
+
+If a user **is** signed in, the navbar will provide the user with: 
+- Potato logo. Also serves as a link, directing the user to the home page
+- Add recipe link. Directs user to create recipe page
+- Feed link. Directs user to page with content filtered by users they follow
+- Saved recipes link. Directs user to page with saved recipes by other users
+- Sign out link. Allows user to sign out and redirects user to home page
+- Profile link. Directs user to their own profile page
+
+<details><summary>Screenshot 1</summary>
+<img src="docs/images/features/navbar_signedout.png">
+</details>
+<details><summary>Screenshot 2</summary>
+<img src="docs/images/features/navbar_signedin.png">
+</details>
+<br>
+
+### Sign up
+The Sign up page allows users to create an account, which they can use to sign in with to access all the features of the platform. The user can sign up with a username of their choice (unless already taken), and is required to choose a password for their account aswell. They can then click Sign up and are redirected to the Sign in page, where they can enter their newly created account credentials. If the user already has an account while visiting the Sign up page, they are provided with a Sign in link at the bottom of the form. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/sign_up.png">
+</details>
+<br>
+
+### Sign in
+The Sign in page lets users sign in with their account credentials. When the user has entered their details and clicked Sign in, they are redirected to the home page. If the user doesn't have an account, they are provided with a Sign up link at the bottom of the form. They can see their status of being signed in reflected in the navbar, where they can see the icon links and Sign out function, only visible if signed in. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/sign_in.png">
+</details>
+<br>
+
+### Add recipe
+The Add recipe page allows users to create and share recipes for other users to see and interact with. A user can add a recipe with the following content: 
+- Image
+- Title
+- Category
+- Ingredients
+- Instructions
+When the user clicks create, they are redirected to their newly created recipes page.
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/add_recipe.png">
+</details>
+<br>
+
+### Recipe page
+The Recipe page presents the user with all the details of the recipe: 
+- Recipe creators username and avatar
+- Recipe details (image, title, category, ingredients, instructions)
+- Date of creation
+- View how many times the recipe has been liked, saved and commented on
+- Read comments made on the recipe
+
+Several other functions are also available for a signed in user to interact with depending on if the recipe being viewed is owned by the currently signed in user or someone else. 
+
+If the recipe is owned by **the currently signed in user**, the user can: 
+- Edit their recipe
+- Comment on their recipe
+
+If the recipe is owned by **another user**, the user can: 
+- Show support and 'like' the recipe
+- 'Save' the recipe in their Saved recipes page
+- 'Comment' on the recipe
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/recipe_page.png">
+</details>
+<br>
+
+### Comment recipe
+A signed in user can add comments to interact with their own or other users recipes. On the signed in users own comments, a dropdown menu is presented and which allows them the functionalities to also edit or delete their own comments. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/recipe_comment.png">
+</details>
+<br>
+
+### Edit recipe
+A signed in user can edit the details of their own recipes. This is accessed by the dropdown menu next to the creation date of their recipe, in the recipe page. When clicking the dropdown menu, the user can choose to edit or delete the recipe. Clicking edit takes them to a page very similar to when adding the recipe, now the fields are prepopulated with previously entered form details. Saving the edited details, will redirect the user back to the recipe page which is now updated with the new details. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/recipe_page_edit.png">
+</details>
+<br>
+
+### Profile page
+The Profile page contains the user details and the created recipes of a user. 
+Details presented: 
+- Username
+- Avatar
+- Profile stats (number of recipes created, followers and users followed)
+- Nationality (optional)
+- Biography (optional)
+
+Profile pages can be accessed by clicking on the username or avatar of a recipe. A signed in user can also access their own profile page from the profile link in the navbar. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/profile_page.png">
+</details>
+<br>
+
+### Edit profile
+A signed in user can edit their owne profile by clicking the dropdown menu at the top right of their profile page. They are presented with the options: 
+- Edit profile
+    - Clicking this option allows users to edit their profile avatar, bio and nationality
+- Change username
+    - Clicking this option allows users to edit their account/profile username
+- Change password
+    - Clicking this option allows users to edit their account/profile password
+
+<details><summary>Screenshot 1</summary>
+<img src="docs/images/features/profile_page_dropdown.png">
+</details>
+<details><summary>Screenshot 2</summary>
+<img src="docs/images/features/profile_page_edit.png">
+</details>
+<br>
+
+### Follow/Unfollow users
+When a user is viewing another users profile, they are presented with a 'follow' button in the top right corner of their profile page. If the user wishes to stay up to date with the content of the other profile, they can click the follow button to add the viewed profile to their feed page. The action success is reflected with the follow button changing color and text to 'unfollow' and the viewed profiles 'followers' stats is added by 1, as well as the users profile 'following' stat added by 1. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/follow_unfollow.png">
+</details>
+<br>
+
+### Feed
+A signed in user can access their Feed page, via the feed link located in the navbar. The feed page contains filtered content, only displaying recipes created by users the signed in user is following. 
+
+
+### Saved recipes
+The Saved recipes page acts as a bookmarking page, allowing users to save other users recipes for later use. A signed in user can access their saved recipes page, via the saved recipes link located in the navbar. The saved recipes page contains filtered content, only displaying other profiles recipes the signed in user has saved. 
+
+
+### Search bar
+The search bar allows users to filter the recipe content of the current page (home, feed, saved recipes). It filters by searching recipe title or username of recipe creator. The search bar is located just below the navbar. 
+
+
+### Popular recipes
+The Popular recipes displays a short list of the currently most popular recipes across several pages of the platform. In a descending order with the most popular at the top, it displays the most 'liked' recipes. Each recipe in the list is clickable and takes the user to their respective recipe page. Accomodating site real-estate, top three on mobile and top five on desktop. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/popular_recipes.png">
+</details>
+<br>
+
+### Infinite scroll
+This platform features 'infinite scroll', meaning the user can keep scrolling through the recipes one after another, while the content is loaded automatically and no need to click to access the next page. 
+
+
+### No results
+In the case that there is nothing to display, for example a user searches for something in the search bar that doesn't exist on the platform, the user will be notified with 'No results found'. 
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/features/no_results.png">
+</details>
+<br>
