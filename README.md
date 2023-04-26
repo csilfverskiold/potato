@@ -17,6 +17,11 @@ The live site can be found here: [Potato](https://potato.herokuapp.com/)
         - [User Stories](#user-stories)
     - [Wireframe](#wireframe)
         - [Style and colors](#style-and-colors)
+2. [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+    - [Frameworks, Libraries, Tools and Programs](#frameworks-libraries-tools-and-programs)
+3. [Front-End](#front-end)
+4. [Back-End API](#back-end-api)
 
 
 # UX-Design
@@ -123,3 +128,56 @@ Desktop and mobile layout:
 - Fonts
     - The font used in this project is Nunito from [Google Fonts](https://fonts.google.com/). This font followed the inteded theme nicely with its simple and fun aesthetic.
 
+# Technologies Used
+## Languages
+- HTML
+- CSS
+- JavaScript
+
+## Frameworks, Libraries, Tools and Programs
+- [React](https://17.reactjs.org/) - JavaScript library for building user interfaces.
+- [React Bootstrap 4.6](https://react-bootstrap-v4.netlify.app/) - Used for UI components, styles and responsivness.
+- [React Router](https://v5.reactrouter.com/web/guides/quick-start) - Used to simplify routing without the need to refresh the page.
+- [Axios](https://axios-http.com/docs/intro) - Used to make API requests.
+- [React Infinite Scroll](https://www.npmjs.com/package/react-infinite-scroll-component) - Used to load scrolled content automatically without having to click next page etc.
+- [JWT Decode](https://jwt.io/) - Used to help decode JSON Web tokens. Prevents a not signed in user from making network requests to refresh tokens.
+
+- [Cloudinary](https://cloudinary.com/) - Used as cloud storage for images. 
+- [Google Fonts](https://fonts.google.com/) - Used for platform font.
+- [Font Awesome](https://fontawesome.com/) - Used for platform icons.
+- [RedKetchup.io](https://redketchup.io/favicon-generator) - Used to help generate platform favicon. 
+- [Git](https://git-scm.com/) - Used for version control by utilizing the GitPod terminal to commit to Git and push to GitHub. 
+- [GitHub](https://github.com/) - Used to store the project after pushing.
+- [Heroku](https://id.heroku.com/login) - Used to deploy project to live environment. 
+- [Amiresponsive](https://ui.dev/amiresponsive) -Used to generate mockup imagery to be used in this README.md file. 
+- [Figma](https://www.figma.com/) - Design tool used to sketch out a wireframe.
+
+# Front-End
+The front-end was built using the React library. 
+
+What is React? 
+
+React is a JavaScript library that aims to simplify development of visual interfaces. Developed at Facebook and released to the world in 2013, it drives some of the most widely used apps, powering Facebook and Instagram among countless other applications. Its primary goal is to make it easy to reason about an interface and its state at any point in time, by dividing the UI into a collection of components. ([Source](https://www.freecodecamp.org/news/the-react-handbook-b71c27b0a795/))
+
+In order to simplify and not focus on the whole website at the same time, you break it down into smaller components that you can reuse wherever you want to. Instead of having a complete website re-render every time something changes, React can update only the things that are different than they were before an event happened. This means that if you, for example, change your profile picture, the image is the only thing that is re-rendered – nothing else on the site is updated and replaced with data that is basically the same as it was before. ([Source](https://www.technigo.io/explained/what-is-react))
+
+React and its concept of reusable components allows for creating flexible applications with fast loading time. 
+
+Several components were created an reused throughout this project: 
+
+- `<Asset />` - A component with several uses. Behaves differently depending on which props are passed: 
+    - Animated spinner to display when loading content
+    - Image with src and alt attributes
+    - Paragraph with message
+- `<Avatar />` - Used to display profile images. Examples, this has been reused in the navbar and Recipe page.  
+- `<MoreDropdown />` - Used to render dropdown menu, so that a user can edit their profile, recipes and comments. 
+- `<Navbar />` - Used to display navigational links and other content, depending on if user is signed in or not. 
+- `<NotFound />` - Used to display a 404 'Not found' image and message, reusing the Asset component. 
+- `<Recipe />` - Used to render a users recipe. Handles actions to edit, delete, and other users to like and save. Also displays how many likes, saves and comments a recipe has. Examples, this has been reused in the Recipe and Profile pages.
+- `<PopularRecipes />` - Used to render the most popular recipes by their likes count. 
+- `<CommentCreateForm />` - Displays a comment form on a recipes page and allows user to create a comment. 
+- `<Comment />` - Used to display dropdown menu on a users own comments and handles edit and delete functionality. 
+
+# Back-End API
+
+The API for this Front-End application was built with the Django REST Framework. The repository with a README file for the DRF Back-End can be found [here](https://github.com/csilfverskiold/drf-api-potato).
