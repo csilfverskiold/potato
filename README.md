@@ -24,6 +24,14 @@ The live site can be found here: [Potato](https://potato.herokuapp.com/)
 4. [Back-End API](#back-end-api)
 5. [Features](#features)
     - [Existing Features](#existing-features)
+6. [Manual Testing](#manual-testing)
+    - [Responsiveness](#responsiveness)
+    - [Browser Compability Testing](#browser-compability-testing)
+    - [Lighthouse Testing](#lighthouse-testing)
+    - [Code Validation](#code-validation)
+    - [User Stories Testing](#user-stories-testing)
+    - [Bugs](#bugs)
+7. [Deployment](#deployment)
 
 
 # UX-Design
@@ -249,6 +257,7 @@ The Add recipe page allows users to create and share recipes for other users to 
 - Category
 - Ingredients
 - Instructions
+
 When the user clicks create, they are redirected to their newly created recipes page.
 
 <details><summary>Screenshot</summary>
@@ -368,3 +377,206 @@ In the case that there is nothing to display, for example a user searches for so
 <img src="docs/images/features/no_results.png">
 </details>
 <br>
+
+# Manual Testing
+## Responsiveness
+This project was built according to the Mobile First concept, primarily built for small screens first and adapted for larger after. Testing was conducted for responsiveness on small, medium and large screens. Elements in all pages respond as inteded on all devices.
+
+## Browser Compability Testing
+I have tested that this website works as intended in browsers: 
+- Chrome
+- Firefox
+- Edge
+
+## Lighthouse Testing
+### Accessibility
+I confirmed that the colors and fonts chosen are easy to read and accessible by running it through Lighthouse in Chrome DevTools.
+
+<details><summary>Screenshot</summary>
+<img src="docs/images/lighthouse.png"></details>
+<br>
+
+However, Lighthouse did not entirely approve of the 401 Unauthorized GET/POST requests being made by a user who is not signed in. This results in the 'Best practices' results to be brought down a little. When a user is signed in, the results are better.  
+
+## Code Validation
+The following validators were used to validate the code used in this project:
+- [HTML Validator](https://validator.w3.org/#validate_by_uri)
+    - Results: All clear, no errors to show.
+- [CSS Validator](https://jigsaw.w3.org/css-validator/#validate_by_uri)
+    - Results: All clear, no errors to show.
+
+## User Stories Testing
+#### Navigation
+- Site navigation: As a Site user I can view a navigation bar from every page so that I can navigate easily between pages
+    - **Action:** Navigate to any page on the platform
+    - **Expectation:** A navbar with navlinks is always visible and available
+    - **Result:** Works as intended
+
+- Conditional rendering: As a Site user I can see sign in and sign up options when NOT signed in so that I can sign in or sign up for an account
+    - **Action:** User visiting site NOT signed in
+    - **Expectation:** Options to sign in/up clearly presented when NOT signed in
+    - **Result:** Works as intended
+- Routing: As a Site user I can navigate through pages quickly so that I can view content seamlessly without page refresh
+    - **Action:** Click on navlinks or directing buttons 
+    - **Expectation:** Takes me to the inteded page 
+    - **Result:** Works as intended
+- Avatar: As a Site user I can view users avatars so that I can easily identify users of the application
+    - **Action:** View recipes, profiles and comments
+    - **Expectation:** Users avatars are displayed with their owned recipes, profile and comments
+    - **Result:** Works as intended
+
+#### Authentication
+- Sign up: As a Site user I can create a new account so that I can access all the features for signed up users 
+    - **Action:** Navigate to Sign up page through navbar link, enter username/password details, click Sign up
+    - **Expectation:** Creates a new account allowing me to sign in with entered username/password details
+    - **Result:** Works as intended
+- Sign in: As a Site user I can sign in to the app so that I can access functionality for signed in users 
+    - **Action:** Navigate to Sign in page through navbar link, enter username/password details, click sign Sign in
+    - **Expectation:** Allows user to sign in and access all site functionality
+    - **Result:** Works as intended
+- Signed in status: As a Site user I can tell if I am signed in or not so that I can sign in/out if I need to 
+    - **Action:** Viewing in navbar
+    - **Expectation:** Signed in/out status is reflected to the user in the navbar, rendering user with Sign in/out options
+    - **Result:** Works as intended
+- Refresh access tokens: As a Site user I can maintain my signed in status until I choose to sign out so that my user experience is not compromised
+    - **Action:** Sign in to platform and do not sign out within 24h
+    - **Expectation:** Users stays signed in for 24h, unless actively signing out before then
+    - **Result:** Works as intended
+
+
+#### Adding recipes
+- Post recipe: As a signed in Site user I can post recipes so that I can share my recipes with other users of the site 
+    - **Action:** Navigate to Add recipe page through navbar link
+    - **Expectation:** Add recipe form is presented allowing me to create a recipe with image and detials
+    - **Result:** Works as intended
+- View a recipe: As a Site user I can view the details of each individual recipe so that I can learn more about it 
+    - **Action:** Click on the image of a recipe
+    - **Expectation:** Takes me to the recipes page and displays all of its details
+    - **Result:** Works as intended
+
+#### Recipes page
+- View most recently posted recipe: As a Site user I can view all the most recent recipes, ordered by most recently created first so that I am up to date with the newest recipe content 
+    - **Action:** Navigate to home page (Potato logo in navbar)
+    - **Expectation:** View all the most recent recipes, ordered by most recently created from the top
+    - **Result:** Works as intended
+- Search functionality: As a Site user I can search for recipes with keywords so that I can find the recipes and user profiles I am most interested in
+    - **Action:** Navigate to search bar (below navbar), enter keywords i.e. "burger"
+    - **Expectation:** All recipes with "burger" in title or username will be filtered and displayed
+    - **Result:** Works as intended
+- Popular recipes: As a Site user I can view a list of the most liked recipes so that I can see which recipes are popular 
+    - **Action:** View Home, Recipe, Feed, Saved recipes, Profile pages
+    - **Expectation:** List of popular recipes displayed, ordered by most liked 
+    - **Result:** Works as intended
+- View followed profiles: As a signed in Site user I can view recipes filtered by users I follow so that I can keep up to date with their recipes 
+    - **Action:** Navigate to Feed page
+    - **Expectation:** Only display recipes by user I actively follow
+    - **Result:** Works as intended
+- Infinite scroll: As a Site user I can keep scrolling through the recipes on the site, that are loaded for me automatically so that I don’t have to click on “next page” etc
+    - **Action:** Scroll through the content of the platform
+    - **Expectation:** Content is automatically loaded for me and I don't have to click to get to another page of content
+    - **Result:** Works as intended
+
+#### Individual recipe page 
+- Recipe page: As a Site user I can view a recipes individual page so that I can access the contents and read the comments on that specific recipe
+    - **Action:** Click on the image of a recipe
+    - **Expectation:** Takes me to the recipes page and displays its details and comments
+    - **Result:** Works as intended
+- Edit recipe: As a Recipe owner I can edit the recipe title and content so that I can make corrections or update my recipe after it was created 
+    - **Action:** Navigate to the page of a recipe you own, click dropdown menu and select icon to edit or delete recipe
+    - **Expectation:** Edit allows me to update the content and Delete allows me to delete the recipe
+    - **Result:** Works as intended
+
+#### Commenting on posts
+- Create a comment: As a signed in Site user I can add comments to a recipe so that I can share my thoughts about that recipe 
+    - **Action:** Navigate to the page of a recipe, find comment form at below the recipe content, enter a comment and click Comment
+    - **Expectation:** Adds a comment to a recipes page
+    - **Result:** Works as intended
+- Comment date: As a Site user I can see how long ago a comment was made so that I know how old a comment is 
+    - **Action:** View comment section of a recipe page
+    - **Expectation:** Days/time since comment was created is displayed
+    - **Result:** Works as intended
+- View comments: As a Site user I can read comments on recipes so that I can read what other users think about that recipe 
+    - **Action:** View comment section of a recipe page
+    - **Expectation:** Comments made on the recipe are displayed, most recently created at the top
+    - **Result:** Works as intended
+- Edit comment: As an Owner of a comment I can edit my comment so that I can fix or update my existing comment 
+    - **Action:** Navigate to and click on dropdown menu of a comment you own, select Edit icon
+    - **Expectation:** Edit icon allows me to update my comment
+    - **Result:** Works as intended
+- Delete comment: As an Owner of a comment I can delete my comment so that I can control removal of my comment from the app 
+    - **Action:** Navigate to and click on dropdown menu of a comment you own, select Delete icon
+    - **Expectation:** Delete icon allows me to delete my comment
+    - **Result:** Works as intended
+
+#### Liking recipes
+- Like/Unlike a recipe: As a signed in Site user I can like or unlike other profiles recipes so that I can show my support for the recipes that interests me 
+    - **Action:** Click the like (heart) icon on a recipe to 'like' it, click it again to 'unlike' it
+    - **Expectation:** Liking the recipe is reflected by the icon changing color to red and the likes count to add +1. Unliking is the same but reverse, color changes back to grey and likes count subtracts -1
+    - **Result:** Works as intended
+
+#### Saving recipes 
+- Save/Unsave a recipe: As a signed in Site user I can save or unsave other profiles recipes so that I can bookmark and save their recipe for future use 
+    - **Action:** Click the save (book) icon on a recipe to 'save' it, click it again to 'unsave' it
+    - **Expectation:** Saving the recipe is reflected by the icon changing color to green and the saves count to add +1. The recipe is also added to my Saved recipes page. Unsaving is the same but reverse, color changes back to grey and saves count subtracts -1
+    - **Result:** Works as intended
+
+#### Follow users 
+- Follow/Unfollow a user: As a signed in Site user I can follow and unfollow other user profiles so that I can see and remove posts by specific users in my recipes feed 
+    - **Action:** Navigate to a profiles page, click follow button to 'follow' and unfollow button to 'unfollow' a profile. 
+    - **Expectation:** When following a profile, their created recipes are displayed in your Feed page. When unfollowing a profile, their created recipes are removed and no longer displayed in your Feed page. 
+    - **Result:** Works as intended
+
+#### Profile page
+- Profile page: As a Site user I can view other user profiles so that I can see their recipes and learn more about them
+    - **Action:** Click in a users name or avatar
+    - **Expectation:** Takes me to the users profile page and displays their avatar, name, stats, details and recipes
+    - **Result:** Works as intended
+- View saved recipes: As a signed in Site user I can view saved recipes of other user profiles so that I can find the recipes I saved for later use 
+    - **Action:** Navigate to Saved recipes page through navbar link
+    - **Expectation:** Displays only recipes I have actively clicked the save icon on
+    - **Result:** Works as intended
+- User profile stats: As a Site user I can view stats about a specific user profile: name, nationality, bio, number of recipes, follows and users followed so that I can learn more about them 
+    - **Action:** Viewing a users profile page
+    - **Expectation:** Displays their avatar, name, stats and details
+    - **Result:** Works as intended
+- View all recipes by a specific user profile: As a Site user I can view all the recipes by a specific user so that I see their latest recipes or decide to follow them 
+    - **Action:** Viewing a users recipes in their profile page
+    - **Expectation:** Scroll down below the users stats and details to view their created recipes. If I want to follow them, click the follow button in the top of their profile page
+    - **Result:** Works as intended
+- Edit profile: As a signed in Site user I can edit my profile so that I can update my profile information 
+    - **Action:** Navigate to my Profile page through navbar link, click dropdown menu at the top of my profile page and select Edit profile
+    - **Expectation:** Takes me to an editing page where I can edit my avatar, bio and nationality
+    - **Result:** Works as intended
+- Update username and password: As a signed in Site user I can update my username and password so that I can change my display name an keep my profile secure
+    - **Action:** Navigate to my Profile page through navbar link, click dropdown menu at the top of my profile page and select Change username or Change password options
+    - **Expectation:** Takes me to an editing page where I can change my username or password
+    - **Result:** Works as intended
+
+## Bugs
+### Resolved and unresolved
+#### Resolved
+- In /api/axiosDefaults.js > Wrong url in axios.defaults.baseURL caused bug not allowing access to drf-api. 
+    - Solution: Fixed by editing and adding correct url. 
+- In PopularRecipes.js > Warning in console due to recipe.id key property being placed in an 'a tag', inside a 'p tag'. 
+    - Solution: Fixed by moving recipe.id key property from 'a tag' to 'p tag'. 
+
+#### Unresolved
+- No unresolved bugs.
+
+# Deployment
+This project was deployed through Heroku using the following steps:
+#### **Creating Heroku App**
+- Log into Heroku
+- Select 'Create New App' from your dashboard
+- Choose an app name (if there has been an app made with that name, you will be informed and will need to choose an alternative)
+- Select the appropriate region based on your location
+- Click 'Create App'
+
+**Connecting to GitHub**
+- From the dashboard, click the 'Deploy' tab towards the top of the screen
+- From here, locate 'Deployment Method' and choose 'GitHub'
+- From the search bar newly appeared, locate your repository by name
+- When you have located the correct repository, click 'Connect'
+- Locate 'Manual deploy' section towards the bottom of the page
+- Select branch and click 'Deploy Branch' and wait until build finished
+- Locate and click 'Open app' in top of the app dashboard
