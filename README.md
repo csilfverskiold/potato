@@ -32,7 +32,13 @@ The live site can be found here: [Potato](https://potato.herokuapp.com/)
     - [User Stories Testing](#user-stories-testing)
     - [Bugs](#bugs)
 7. [Deployment](#deployment)
-
+8. [Future Improvements](#future-improvements)
+9. [References](#references)
+    - [Code Content](#code-content)
+    - [Media](#media)
+    - [Design Inspiration](#design-inspiration)
+    - [Other](#other)
+    - [Acknowledgements](#acknowledgements)
 
 # UX-Design
 ## Planning
@@ -580,3 +586,37 @@ This project was deployed through Heroku using the following steps:
 - Locate 'Manual deploy' section towards the bottom of the page
 - Select branch and click 'Deploy Branch' and wait until build finished
 - Locate and click 'Open app' in top of the app dashboard
+
+# Future Improvements
+Here is a list of future improvements I would like to bring into development in the next iteration:
+
+- Improve the UX of the Popular recipes section
+    - Add numbers to the list, making it clearer to a user of which recipe is actually *the* most popular in order
+    - Add a button (i.e. "Take me to recipe") next to each recipe in the list, making the navigation clearer to a user
+- Add more detailed alert messages confirming user interactions. For example a success message when a user adds a recipe
+- Improve the UX of the Profile page
+    - Add icons to enchance the profile page. Icons would be placed next to the profile details, for example a 'globe' or 'flag' next to Nationality. The icons should be representational graphics of the details. 
+
+# References
+## Code Content
+- [CI: Moments walkthrough](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+RA101+2021_T3/courseware/70a8c55db0504bbdb5bcc3bfcf580080/953cd4e5015f483bb05263db3e740e19/) 
+- [README.md structure (my own PP4)](https://github.com/csilfverskiold/restaurant-project/blob/main/README.md)
+
+## Media
+- [Potato image](https://emojipedia.org/potato/) 
+- [Add recipe image](https://www.nicepng.com/ourpic/u2q8y3u2q8w7t4t4_kawaii-food-doodle-part-doodle-cute-cartoon-food/)
+- [No-results image](https://en.m.wikipedia.org/wiki/File:Magnifying_glass_icon.svg)
+- [Sign Up Form image](https://www.pexels.com/sv-se/foto/mat-halsosam-tra-restaurang-3184191/)
+- [Sign In Form image](https://www.pexels.com/sv-se/foto/brod-mat-rostat-brod-hander-3184183/)
+
+## Design Inspiration
+- [Köket](https://www.koket.se/) (Swedish site)
+- [Recept.se](https://recept.se/) (Swedish site)
+- [All Recipes](https://www.allrecipes.com/)
+- [Whisk](https://whisk.com/recipe-sharing-app/)
+- [Bon Appetit](https://www.bonappetit.com/)
+
+## Other
+- [Readme.so](https://readme.so/) README.md tool 
+## Acknowledgements
+- Mentors, tutors and students at Code Institute
